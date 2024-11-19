@@ -45,7 +45,7 @@ final Map<String, String> enUs = {
   "lbl_view_all": "View all",
   "msg_chicken_crisp_papadum": "Chicken crisp papadum ",
   "lbl_order_now": "Order now",
-  "lbl_welcome": "Welcome",
+  "lbl_welcome": "Bienvenido",
 
   // What for lunch Screen
   "lbl_delicious_meat": "Delicious meat",
