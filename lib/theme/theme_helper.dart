@@ -51,7 +51,6 @@ class ThemeHelper {
       splashFactory: NoSplash.splashFactory,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-
       textTheme: TextThemes.textTheme(colorScheme),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -183,17 +182,17 @@ class TextThemes {
 class ColorSchemes {
   static final primaryColorScheme = ColorScheme.light(
     // Primary colors
-    primary: Color(0XFF5E9920),
+    primary: Color(0X103238),
     primaryContainer: Color(0XFF283593),
     secondary: Color(0XFF283593),
-    secondaryContainer: Color(0XFFB1D34A),
+    secondaryContainer: Color(0X295B38),
     tertiary: Color(0XFF283593),
-    tertiaryContainer: Color(0XFFB1D34A),
+    tertiaryContainer: Color(0X227A84),
 
     // Surface colors
     surface: Color(0XFF283593),
     surfaceTint: Color(0X00111111),
-    surfaceContainerHighest: Color(0XFFB1D34A),
+    surfaceContainerHighest: Color(0X227A84),
 
     // Error colors
     error: Color(0X00111111),
@@ -255,14 +254,14 @@ class PrimaryColors {
 
   // Green
   Color get green50 => Color(0XFFE6F1DB);
-  Color get greenA700 => Color(0XFF04B155);
+  Color get greenA700 => Color(0X184C55);
 
   // Indigo
   Color get indigo100 => Color(0XFFD0DAF4);
 
   // LightGreen
   Color get lightGreen100 => Color(0XFFD9F4D0);
-  Color get lightGreen600 => Color(0XFF74B23B);
+  Color get lightGreen600 => Color(0X184C55);
 
   // Lime
   Color get lime100 => Color(0XFFF4E9D0);
@@ -290,25 +289,18 @@ class PrimaryColors {
 PrimaryColors get appTheme => ThemeHelper().themeColor();
 ThemeData get theme => ThemeHelper().themeData();
 
+class AppColor {
+  static Color primaryColor = const Color(0x247380);
+  static Color primaryLightColor = const Color(0xFFE6F1DB);
 
+  static Color black = const Color(0xFF000000);
+  static Color grey400 = const Color(0xFF808080);
+  static Color grey300 = const Color(0xFFC5C5C5);
+  static Color grey200 = const Color(0xFFF0F0F0);
+  static Color grey100 = const Color(0xFFF8f8f8);
+  static Color white = const Color(0xFFffffff);
 
-class AppColor{
-
-  static  Color primaryColor = const Color(0xFF5E9920);
-  static  Color primaryLightColor = const Color(0xFFE6F1DB);
-
-  static  Color black = const Color(0xFF000000);
-  static  Color grey400 = const Color(0xFF808080);
-  static  Color grey300 = const Color(0xFFC5C5C5);
-  static  Color grey200 = const Color(0xFFF0F0F0);
-  static  Color grey100 = const Color(0xFFF8f8f8);
-  static  Color white = const Color(0xFFffffff);
-
-
-  static  Color success = const Color(0xFF51cf66);
-  static  Color main = const Color(0xFF5E9920);
-  static  Color error = const Color(0xFFD93636);
-
-
+  static Color success = const Color(0x227A84);
+  static Color main = const Color(0x295B38);
+  static Color error = const Color(0xFFD93636);
 }
-

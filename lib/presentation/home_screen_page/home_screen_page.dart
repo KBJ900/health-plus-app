@@ -18,182 +18,187 @@ class HomeScreenPage extends StatelessWidget {
   HomeScreenController controller =
       Get.put(HomeScreenController(HomeScreenModel().obs));
 
-  RecommendationsController recommendationsController =Get.put(RecommendationsController());
+  RecommendationsController recommendationsController =
+      Get.put(RecommendationsController());
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
+    // =============================
+// 🟦 SECCIÓN: Estructura general
+// =============================
     return Scaffold(
-        backgroundColor: theme.colorScheme.onPrimaryContainer,
+        // Contenedor principal que organiza la estructura de la pantalla.
+        backgroundColor: theme.colorScheme
+            .onPrimaryContainer, // Define el color de fondo de la pantalla.
 
-        body: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.start,
+        // =============================
+        // 🟩 SECCIÓN: Contenido principal
+        // =============================
+        body: Column(// Organiza los widgets hijos verticalmente.
             children: [
-              Padding(
-                padding: getPadding(left: 20,right: 20,top: 16,bottom: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+          // Lista de widgets hijos dentro de la columna.
+
+          // =============================
+          // 🟨 SECCIÓN: Barra superior
+          // =============================
+          Padding(
+            // Agrega espacio alrededor de un widget.
+            padding: getPadding(
+                left: 20,
+                right: 20,
+                top: 16,
+                bottom:
+                    16), // Define los márgenes superior, inferior, izquierdo y derecho.
+            child: Row(
+              // Organiza los widgets horizontalmente.
+              mainAxisAlignment: MainAxisAlignment
+                  .spaceBetween, // Deja espacio uniforme entre los hijos del Row.
+              crossAxisAlignment: CrossAxisAlignment
+                  .center, // Centra los widgets verticalmente dentro del Row.
+              children: [
+                // Lista de widgets dentro del Row.
+
+                // 🟧 Subsección: Texto de bienvenida
+                Expanded(
+                  // Hace que este widget ocupe todo el espacio disponible horizontalmente.
+                  child: Column(
+                    // Organiza widgets verticalmente.
+                    crossAxisAlignment: CrossAxisAlignment
+                        .start, // Alinea los widgets al inicio horizontalmente.
+                    children: [
+                      // Lista de widgets dentro del Column.
+                      Text(
+                        // Muestra texto en pantalla.
+                        'Welcome', // Texto que se mostrará.
+                        style: TextStyle(
+                            // Define el estilo del texto.
+                            color: AppColor.black, // Color del texto.
+                            fontSize: getFontSize(28), // Tamaño de la fuente.
+                            fontWeight: FontWeight
+                                .w700), // Peso de la fuente (negrita).
+                      ),
+                      Text(
+                        // Muestra otro texto en pantalla.
+                        'john abram', // Texto que se mostrará.
+                        style: TextStyle(
+                            // Define el estilo del texto.
+                            color: AppColor.grey400, // Color del texto.
+                            fontSize: getFontSize(16), // Tamaño de la fuente.
+                            fontWeight:
+                                FontWeight.w400), // Peso de la fuente (normal).
+                      ),
+                    ],
+                  ),
+                ),
+
+                // 🟪 Subsección: Ícono de notificación
+                GestureDetector(
+                  // Detecta interacciones táctiles en este widget.
+                  onTap: () {
+                    // Función que se ejecuta al tocar este widget.
+                    onTapIcnotification(); // Llama a la función para manejar la acción de la notificación.
+                  },
+                  child: Padding(
+                    // Agrega espacio alrededor del hijo (ícono de notificación).
+                    padding:
+                        getPadding(right: 16), // Margen derecho de 16 píxeles.
+                    child: CustomImageView(
+                      // Widget personalizado para mostrar una imagen.
+                      svgPath: ImageConstant
+                          .imgIcnotification, // Ruta de la imagen SVG.
+                    ),
+                  ),
+                ),
+
+                // 🟥 Subsección: Ícono de premium
+                GestureDetector(
+                  // Detecta toques en este widget.
+                  onTap: () {
+                    // Función que se ejecuta al tocar este widget.
+                    Get.toNamed(AppRoutes
+                        .premiumScreen); // Navega a la pantalla de "premium".
+                  },
+                  child: CustomImageView(
+                    // Widget personalizado para mostrar otra imagen.
+                    svgPath: ImageConstant
+                        .imgPremiumquality3, // Ruta de la imagen SVG.
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // =============================
+          // 🟦 SECCIÓN: Lista desplazable
+          // =============================
+          Expanded(
+            // Hace que este widget (ListView) ocupe todo el espacio restante verticalmente.
+            child: ListView(
+              // Lista desplazable verticalmente.
+              physics:
+                  BouncingScrollPhysics(), // Agrega un efecto de rebote al desplazarse.
+              children: [
+                // Lista de widgets hijos dentro del ListView.
+
+                // 🟩 Subsección: Tarjeta de running
+                RunningCard(), // Widget personalizado, posiblemente una tarjeta con información.
+
+                // 🟨 Subsección: Opción de inicio
+                HomeOption(), // Otro widget personalizado con una opción.
+
+                // 🟧 Subsección: ¿Qué hay para el almuerzo?
+                Padding(
+                    // Agrega espacio alrededor del siguiente Row.
+                    padding: getPadding(
+                        left: 20,
+                        right: 20), // Define márgenes izquierdo y derecho.
+                    child: Row(
+                        // Organiza widgets horizontalmente.
+                        mainAxisAlignment: MainAxisAlignment
+                            .spaceBetween, // Deja espacio uniforme entre los widgets.
                         children: [
-                          Text('Welcome',style: TextStyle(
-                            color: AppColor.black,
-                            fontSize: getFontSize(28),
-                            fontWeight: FontWeight.w700
-                          ),),
-                          Text('john abram',style: TextStyle(
-                            color: AppColor.grey400,
-                            fontSize: getFontSize(16),
-                            fontWeight: FontWeight.w400
-                          ),),
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        onTapIcnotification();
-                      },
-                      child: Padding(
-                        padding:getPadding(right: 16),
-                        child: CustomImageView(
-                          svgPath: ImageConstant.imgIcnotification,
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.premiumScreen);
-                      },
-                      child: CustomImageView(
-                        svgPath: ImageConstant.imgPremiumquality3,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                 physics: BouncingScrollPhysics(),
-                 // shrinkWrap: true,
-                 children: [
-                   RunningCard(),
-                   HomeOption(),
-                   Padding(
-                      padding: getPadding(left: 20, right: 20),
-                      child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
-                          children: [
-                           Text("lbl_what_for_lunch".tr,
-                               style: theme.textTheme.titleLarge),
-                           GestureDetector(
-                               onTap: () {
-                                onTapTxtViewall();
-                               },
-                               child: Padding(
-                                   padding: getPadding(
-                                       top: 3, bottom: 3),
-                                   child: Text("lbl_view_all".tr,
-                                       style: CustomTextStyles
-                                           .bodyLargeOnError_1)))
-                          ])),
-                   /// What for lunch
-                   Container(
-                     margin: getMargin(top: 16,bottom: 24),
-                     height: getSize(233),
+                          // Lista de widgets dentro del Row.
+                          Text(
+                              // Texto que se muestra a la izquierda.
+                              "lbl_what_for_lunch"
+                                  .tr, // Texto traducido (internacionalización).
+                              style: theme.textTheme
+                                  .titleLarge), // Estilo tomado del tema.
+                          GestureDetector(
+                              // Detecta toques en el siguiente texto.
+                              onTap: () {
+                                // Función que se ejecuta al tocar el texto.
+                                onTapTxtViewall(); // Llama a la función para manejar la acción.
+                              },
+                              child: Padding(
+                                  // Agrega espacio alrededor del texto interactivo.
+                                  padding: getPadding(
+                                      top: 3,
+                                      bottom: 3), // Margen superior e inferior.
+                                  child: Text(
+                                      // Texto que se muestra a la derecha.
+                                      "lbl_view_all"
+                                          .tr, // Texto traducido (internacionalización).
+                                      style: CustomTextStyles
+                                          .bodyLargeOnError_1))) // Estilo personalizado.
+                        ])),
 
-                     child: ListView.builder(
-                       physics: BouncingScrollPhysics(),
-                       shrinkWrap: true,
-                     
-                       scrollDirection: Axis.horizontal,
-                       itemCount: 3,
-
-                       itemBuilder: (context, index) {
-                         return  Padding(
-                           padding: getPadding(left: 16),
-                           child: GestureDetector(
-                             onTap: () {
-                               Get.toNamed(AppRoutes.detailsScreen);
-                             },
-                             child: WhatLunchContainer(
-                               name: AppListData.lunchList[index].name,
-                               img: AppListData.lunchList[index].img,
-                               time: AppListData.lunchList[index].time,
-                               kcal: AppListData.lunchList[index].kcal,
-                             ),
-                           )
-                         );
-                       },
-                     ),
-                   ),
-
-                   GestureDetector(
-                     onTap: () {
-                       PrefData.currentIndex=1;
-                       controller.update();
-
-                     },
-                       child: HealthyFoodMenuBanner()),
-
-                   Padding(
-                      padding: getPadding(top: 29, right: 20,left: 20),
-                      child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                          children: [
-                           Expanded(
-                             child: Text("msg_recommendations".tr,
-                                 style: theme.textTheme.titleLarge),
-                           ),
-                           GestureDetector(
-                               onTap: () {
-                                onTapTxtViewallone();
-                               },
-                               child: Padding(
-                                   padding: getPadding(bottom: 5),
-                                   child: Text("lbl_view_all".tr,
-                                       style: CustomTextStyles
-                                           .bodyLargeOnError_1)))
-                          ]
-                      )
-                   ),
-
-                   Container(
-                     margin: getMargin(top: 16),
-                     // height: getSize(230),
-                     height: getSize(235),
-                     child: GridView.builder(
-                         padding: getPadding(left: 20,right: 20),
-                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                             mainAxisExtent: getSize(227),
-                             crossAxisCount: 2,
-                             mainAxisSpacing: getSize(16),
-                             crossAxisSpacing: getSize(16)),
-                         physics: BouncingScrollPhysics(),
-                         itemCount: 2,
-                         itemBuilder: (context, index) {
-                           return RecommendationsItemWidget(
-                             img: AppListData.recommendationsList[index].img,
-                             text: AppListData.recommendationsList[index].name,
-                             color: AppListData.recommendationsList[index].backColor,
-
-                           );
-                         }
-                     ),
-                   ),
-                 ],
-                ),
-              )
-            ]
-        )
-    );
+                // 🟥 Subsección: Banner de menú saludable
+                GestureDetector(
+                    // Detecta toques en el banner interactivo.
+                    onTap: () {
+                      // Función que se ejecuta al tocar.
+                      PrefData.currentIndex = 1; // Actualiza el índice actual.
+                      controller
+                          .update(); // Actualiza el estado del controlador.
+                    },
+                    child:
+                        HealthyFoodMenuBanner()), // Muestra un banner personalizado.
+              ],
+            ),
+          )
+        ]));
   }
 
   onTapIcnotification() {

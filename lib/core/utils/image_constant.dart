@@ -9,7 +9,7 @@ class ImageConstant {
 
   // Onboarding One images
   static String imgFlatlaycompos = '$imagePath/img_flatlaycompos.png';
-  static String imgTopView = '$imagePath/topImg.png';
+  static String imgTopView = '$imagePath/headlogo.png';
   static String imgDOM = '$imagePath/dOM.png';
 
   static String add = '$imagePath/add.png';
@@ -27,7 +27,6 @@ class ImageConstant {
 
   // Onboarding Five images
   static String imgSchezwannoodle = '$imagePath/img_schezwannoodle.png';
-
 
   static String onThree = '$imagePath/onThree.png';
 
@@ -71,7 +70,7 @@ class ImageConstant {
   // Change delivery address images
   static String imgArrowrightOnerror = '$imagePath/img_arrowright_onerror.svg';
 
-  // static String imgTopView = '$imagePath/topImg.svg';
+  // static String imgTopView = '$imagePath/headlogo.svg';
 
   static String imgPlusBlack900 = '$imagePath/img_plus_black_900.svg';
 
@@ -132,7 +131,6 @@ class ImageConstant {
   static String imgGroup153 = '$imagePath/img_group153.svg';
 
   static String imgBanner = '$imagePath/Banner.svg';
-
 
   static String imgPassDone = '$imagePath/passDone.svg';
 
@@ -206,8 +204,6 @@ class ImageConstant {
   static String oM4 = '$imagePath/oM4.png';
   static String oM5 = '$imagePath/oM5.png';
 
-
-
   static String imgClock = '$imagePath/img_clock.svg';
 
   static String imgIcfire = '$imagePath/img_icfire.svg';
@@ -236,11 +232,7 @@ class ImageConstant {
 
   static String imgIcadd = '$imagePath/img_icadd.svg';
 
-
-
-
   static String imgRectangle7282 = '$imagePath/img_rectangle728_2.png';
-
 
   static String imgR1 = '$imagePath/r1.png';
   static String imgR2 = '$imagePath/r2.png';
