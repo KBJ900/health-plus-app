@@ -139,6 +139,8 @@ class AppRoutes {
 
   static const String homeScreenPage = '/home_screen_page';
 
+  static const String homeDoctorPage = '/home_doctor_page';
+
   static const String homeScreenContainerScreen ='/home_screen_container_screen';
 
   static const String homeScreenDoctor ='/home_screen_doctor';

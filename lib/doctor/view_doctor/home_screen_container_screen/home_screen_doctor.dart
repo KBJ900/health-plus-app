@@ -6,7 +6,9 @@ import 'dart:io'; // Usado para detectar la plataforma, en este caso iOS y Andro
 
 import 'package:flutter/material.dart'; // Paquete de Flutter para crear la UI.
 import 'package:diet_recipe_app/core/app_export.dart'; // Importación de configuraciones y temas globales.
-import 'package:diet_recipe_app/presentation/home_screen_page/home_screen_page.dart'; // Pantalla principal.
+
+import 'package:diet_recipe_app/doctor/view_doctor/home_screen_page/home_doctor_page.dart'; // Pantalla principal.
+
 import 'package:diet_recipe_app/presentation/menu_page/menu_page.dart'; // Pantalla de menú.
 import 'package:diet_recipe_app/presentation/menu_tab_container_page/menu_tab_container_page.dart'; // Contenedor de pestañas del menú.
 import 'package:diet_recipe_app/presentation/my_plan_page/my_plan_page.dart'; // Pantalla de planes del usuario.
@@ -193,7 +195,7 @@ class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home:
-        return AppRoutes.homeScreenPage;
+        return AppRoutes.homeDoctorPage;
       case BottomBarEnum.ourMenu:
         return AppRoutes.menuPage;
       case BottomBarEnum.add:
@@ -213,8 +215,8 @@ class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
 
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homeScreenPage:
-        return HomeScreenPage();
+      case AppRoutes.homeDoctorPage:
+        return HomeDoctorPage();
       case AppRoutes.menuTabContainerPage:
         return MenuTabContainerPage();
       case AppRoutes.chooseYourPlanStandardTabContainerScreen:
@@ -233,7 +235,7 @@ class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
   // =============================
 
   List<Widget> pageList = [
-    HomeScreenPage(), // Página de inicio.
+    HomeDoctorPage(), // Página de inicio.
     MenuPage(), // Página de menú.
     ChooseYourPlanStandardTabContainerScreen(), // Página para elegir plan.
     MyPlanPage(), // Página de planes del usuario.
