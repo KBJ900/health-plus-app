@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignorar_por_archivo: uso_miembro_obsoleto
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -11,7 +11,7 @@ import 'package:diet_recipe_app/widgets/custom_icon_button.dart';
 import '../../generated/assets.dart';
 import 'controller/my_profile_controller.dart';
 
-// ignore_for_file: must_be_immutable
+// ignorar_por_archivo: debe_ser_inmutable
 class MyProfileScreen extends GetWidget<MyProfileController> {
   MyProfileScreen({Key? key}) : super(key: key);
 
@@ -36,7 +36,7 @@ class MyProfileScreen extends GetWidget<MyProfileController> {
                     children: [
                       AppBarText(
                         onTap: () => Get.back(),
-                        title: 'My profile',
+                        title: 'Mi perfil',
                         rightIcon: CustomImageView(
                           onTap: () {
                             Get.toNamed(AppRoutes.editProfileScreen);
@@ -84,12 +84,12 @@ class MyProfileScreen extends GetWidget<MyProfileController> {
 
                       MyProfileOpe(),
                       MyProfileOpe(
-                        title: 'Last name',
-                        personInfo: 'Abram',
+                        title: 'Apellido',
+                        personInfo: 'Abram xd',
                       ),
                       MyProfileOpe(
                         personInfo: 'johnabram@gmail.com',
-                        title: 'Email address',
+                        title: 'Dirección de correo electrónico',
                       ),
                     ],
                 ),

@@ -3,8 +3,8 @@ description: A new Flutter project.
 version: 1.0.0+1
 environment:
   sdk: ">=3.4.3 <4.0.0"
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: flutter
   get: ^4.6.6
   connectivity_plus: ^6.1.0
@@ -21,17 +21,19 @@ dependencies:
   pinput: ^5.0.0
   percent_indicator: ^4.2.3
   syncfusion_flutter_datepicker: ^27.1.57
-dev_dependencies: 
-  flutter_test: 
+  firebase_core: ^3.8.0
+
+dev_dependencies:
+  flutter_test:
     sdk: flutter
-flutter: 
+flutter:
   uses-material-design: true
-  assets: 
+  assets:
     - assets/
     - assets/images/
-  fonts: 
+  fonts:
     - family: SF Pro Display
-      fonts: 
+      fonts:
         - asset: assets/fonts/SFProDisplayRegular.ttf
           weight: 400
         - asset: assets/fonts/SFProDisplayBold.ttf
@@ -41,10 +43,10 @@ flutter:
         - asset: assets/fonts/SFProDisplayMedium.ttf
           weight: 500
     - family: SF Pro Text
-      fonts: 
+      fonts:
         - asset: assets/fonts/SFProTextSemibold.ttf
           weight: 600
     - family: Rubik
-      fonts: 
+      fonts:
         - asset: assets/fonts/RubikMedium.ttf
           weight: 500

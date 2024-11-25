@@ -7,6 +7,7 @@ import 'package:diet_recipe_app/widgets/custom_elevated_button.dart';
 import 'package:diet_recipe_app/widgets/custom_text_form_field.dart';
 import '../../data/pref_data/pref_data.dart';
 import 'controller/login_controller.dart';
+import '../../services/auth_service.dart';
 
 // ignore_for_file: must_be_immutable
 // Define la clase LoginScreen, que es un widget basado en GetWidget (de GetX).
@@ -41,12 +42,12 @@ class LoginScreen extends GetWidget<LoginController> {
                 left: 30, right: 30), // Margen interno del cuadro de diálogo.
 
             // =============================
-// 🟩 SECCIÓN: Título del cuadro de diálogo
-// =============================
+            // 🟩 SECCIÓN: Título del cuadro de diálogo
+            // =============================
             title: Padding(
               padding: getPadding(left: getSize(50), right: getSize(50)),
               child: Text(
-                'Are you sure you want to Exit?', // Texto que indica si está seguro de salir.
+                  '¿Estás segur@ de que quieres salir?', // Texto que indica si está seguro de salir.
                 style: TextStyle(
                   color: Colors.black, // Texto en negro.
                   fontSize: getFontSize(18), // Tamaño del texto.
@@ -54,95 +55,86 @@ class LoginScreen extends GetWidget<LoginController> {
                 ),
               ),
             ),
+              // =============================
+              // 🟧 SECCIÓN: Botones del cuadro de diálogo
+              // =============================
+              actions: <Widget>[
+                Row(
+                  children: [
+                    Expanded(
+                      // Botón "No", que cierra el cuadro de diálogo.
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back(); // Cierra el cuadro de diálogo y vuelve a la pantalla anterior.
+                        },
+                        child: Padding(
+                          padding: getPadding(bottom: 16, left: 16),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(8), // Bordes redondeados.
+                              border: Border.all(
+                                color: Color(0xFF4CAF50), // Color verde para el borde.
+                                width: getSize(1.5), // Ancho del borde.
+                              ),
+                            ),
+                            child: Padding(
+                              padding: getPadding(top: getSize(14), bottom: getSize(14)),
+                              child: Center(
+                                child: Text(
+                                  'No', // Texto del botón "No".
+                                  style: TextStyle(
+                                    color: Color(0xFF4CAF50), // Texto en verde.
+                                    fontSize: getFontSize(18), // Tamaño del texto.
+                                    fontWeight: FontWeight.w700, // Peso del texto.
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: getSize(20)), // Espacio entre los botones.
+                    Expanded(
+                      // Botón "Yes", que llama a la función de salida.
+                      child: GestureDetector(
+                        onTap: () {
+                          controller.onExit(); // Llama a la función onExit en el controlador.
+                          controller.update(); // Actualiza el estado del controlador.
+                        },
+                        child: Padding(
+                          padding: getPadding(bottom: 16, right: 16),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(8), // Bordes redondeados.
+                              color: Color(0xFF4CAF50), // Fondo verde para el botón.
+                              // Fondo color verde del botón.
+                            ),
+                            child: Padding(
+                              padding: getPadding(top: getSize(14), bottom: getSize(14)),
+                              child: Center(
+                                child: Text(
+                                  'Si', // Texto del botón "Yes".
+                                  style: TextStyle(
+                                    color: Colors.white, // Texto en blanco.
+                                    fontSize: getFontSize(18), // Tamaño del texto.
+                                    fontWeight: FontWeight.w700, // Peso del texto.
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
 
-            // =============================
-// 🟧 SECCIÓN: Botones del cuadro de diálogo
-// =============================
-            actions: <Widget>[
-              Row(
-                children: [
-                  Expanded(
-                    // Botón "No", que cierra el cuadro de diálogo.
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.back(); // Cierra el cuadro de diálogo y vuelve a la pantalla anterior.
-                      },
-                      child: Padding(
-                        padding: getPadding(bottom: 16, left: 16),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(8), // Bordes redondeados.
-                            border: Border.all(
-                              color: theme.focusColor, // Color del borde.
-                              width: getSize(1.5), // Ancho del borde.
-                            ),
-                          ),
-                          child: Padding(
-                            padding: getPadding(
-                                top: getSize(14), bottom: getSize(14)),
-                            child: Center(
-                              child: Text(
-                                'No', // Texto del botón "No".
-                                style: TextStyle(
-                                  color: const Color.fromARGB(
-                                      255, 0, 0, 0), // Texto en blanco.
-                                  fontSize:
-                                      getFontSize(18), // Tamaño del texto.
-                                  fontWeight:
-                                      FontWeight.w700, // Peso del texto.
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: getSize(20)), // Espacio entre los botones.
-                  Expanded(
-                    // Botón "Yes", que llama a la función de salida.
-                    child: GestureDetector(
-                      onTap: () {
-                        controller
-                            .onExit(); // Llama a la función onExit en el controlador.
-                        controller
-                            .update(); // Actualiza el estado del controlador.
-                      },
-                      child: Padding(
-                        padding: getPadding(bottom: 16, right: 16),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(8), // Bordes redondeados.
-                            color: theme.focusColor, // Color del borde.
-                            // Fondo color primario del botón.
-                          ),
-                          child: Padding(
-                            padding: getPadding(
-                                top: getSize(14), bottom: getSize(14)),
-                            child: Center(
-                              child: Text(
-                                'Yes', // Texto del botón "Yes".
-                                style: TextStyle(
-                                  color: Colors.white, // Texto en blanco.
-                                  fontSize:
-                                      getFontSize(18), // Tamaño del texto.
-                                  fontWeight:
-                                      FontWeight.w700, // Peso del texto.
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
           ),
         );
         return Future(() =>
@@ -209,7 +201,7 @@ class LoginScreen extends GetWidget<LoginController> {
                         ),
                       ),
                     ),
-                    // =============================
+// =============================
 // 🟩 SECCIÓN: Campo de correo
 // =============================
                     Padding(
@@ -284,24 +276,98 @@ class LoginScreen extends GetWidget<LoginController> {
                             return null;
                           },
                         )),
-// =============================
-// 🟪 SECCIÓN: Botón de login
-// =============================
+                    // =============================
+                    // 🟪 SECCIÓN: Botón de login
+                    // =============================
                     CustomElevatedButton(
-                      text: "lbl_login".tr, // Texto del botón.
-                      margin: getMargin(left: 20, top: 49, right: 20),
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          PrefData.setLogin(
-                              false); // Desmarca el estado de login.
-                          onTapLogin(); // Llama a la función de login.
-                          controller.emailController
-                              .clear(); // Limpia el campo de correo.
-                          controller.passwordController
-                              .clear(); // Limpia el campo de contraseña.
+                    text: "lbl_login".tr, // Texto del botón.
+                    margin: getMargin(left: 20, top: 49, right: 20),
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {
+                        // Obtén los valores ingresados por el usuario.
+                        String email = controller.emailController.text;
+                        String password = controller.passwordController.text;
+
+                        try {
+                          // Asegúrate de pasar el 'type' correspondiente al tipo de cuenta.
+                          String type = "Patient"; // O "Doctor", según lo que se desee.
+
+                          // Realiza la autenticación con los datos ingresados y el tipo de usuario.
+                          final response = await AuthService().login(email, password, type);
+
+                          // Valida si 'mobileUser_id' existe en la respuesta.
+                          if (response["mobileUser_id"] != null) {
+                            String userType = response["type"] ?? ""; // Extrae el tipo de usuario.
+
+                            // Navega dependiendo del tipo de usuario.
+                            if (userType == "Patient") {
+                              onTapLogin(); // Redirige a la pantalla del paciente.
+                            } else if (userType == "Doctor") {
+                              Get.toNamed(AppRoutes.homeScreenDoctor); // Redirige a la pantalla del doctor.
+                            } else {
+                              // Tipo de usuario no válido.
+                              showDialog(
+                                context: Get.context!,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("Error"),
+                                    content: Text("Tipo de usuario no válido. Contacte al soporte."),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text("OK"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+                          } else {
+                            // Si no se encuentra el usuario.
+                            showDialog(
+                              context: Get.context!,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Error de login"),
+                                  content: Text("No se encontró el usuario. Verifica tus credenciales."),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("OK"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        } catch (e) {
+                          // Manejo de errores en caso de problemas de conexión.
+                          showDialog(
+                            context: Get.context!,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Error de conexión"),
+                                content: Text("No se pudo conectar al servidor. Inténtalo de nuevo."),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("OK"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         }
-                      },
-                    ),
+                      }
+                    },
+                  ),
+
                   ],
                 ),
               ),

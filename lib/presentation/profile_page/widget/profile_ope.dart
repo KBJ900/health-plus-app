@@ -45,7 +45,7 @@ class ProfileOpe extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: getPadding(left: 16),
-                child: Text(optionName??'My profile',style: theme.textTheme.bodyLarge,),
+                child: Text(optionName??'Mi perfil',style: theme.textTheme.bodyLarge,),  // "My profile" -> "Mi perfil"
               ),
             ),
             CustomImageView(

@@ -102,6 +102,9 @@ import '../presentation/resetpassword_screen/resetpassword_screen.dart';
 import '../presentation/splash_screen/binding/splace_binding.dart';
 import '../presentation/splash_screen/splash_screen.dart';
 
+/// New 
+import 'package:diet_recipe_app/presentation/view_doctor/home/home_screen_doctor.dart';
+
 class AppRoutes {
   static const String splaceScreen = '/splace_screen';
 
@@ -136,8 +139,9 @@ class AppRoutes {
 
   static const String homeScreenPage = '/home_screen_page';
 
-  static const String homeScreenContainerScreen =
-      '/home_screen_container_screen';
+  static const String homeScreenContainerScreen ='/home_screen_container_screen';
+
+  static const String homeScreenDoctor ='/home_screen_doctor';
 
   static const String whatForLunchScreen = '/what_for_lunch_screen';
 
@@ -376,6 +380,14 @@ class AppRoutes {
         HomeScreenContainerBinding(),
       ],
     ),
+
+    GetPage(
+      name: homeScreenDoctor,
+      page: () => HomeScreenDoctor(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    
     GetPage(
       name: whatForLunchScreen,
       page: () => WhatForLunchScreen(),

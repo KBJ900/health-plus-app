@@ -214,89 +214,83 @@ final Map<String, String> enUs = {
   "lbl_10_july": "10 July", "lbl_10_june": "10 June", "lbl_20_days": "20 Days",
   "lbl_20_snacks": "20 Snacks",
 
-  // My plan Screen
-  "msg_date_12_aug_to": "Date : 12 Aug to 1 Sep",
-  "msg_date_05_feb_to": "Date : 05 Feb to 14 Mar",
-  "lbl_beverages": "Beverages",
-  "msg_date_17_aug_to": "Date : 17 Aug to 14 Sep",
-  "msg_date_08_aug_to": "Date : 08 Aug to 18 Sep",
-  "msg_low_carbohydrate": "Low-carbohydrate plan",
-  "lbl_vegetarian": "Vegetarian",
-  "lbl_pending": "Pending",
-  "lbl_complate": "Complate",
-  "msg_date_02_jan_to": "Date : 02 Jan to 01 Feb",
-  "msg_an_experimental": "An experimental diet",
-  "msg_course_dinner_menu": "Course dinner menu",
-  "msg_date_15_may_to": "Date : 15 May to 17 Jul",
+// Pantalla de mi plan
+"msg_date_12_aug_to": "Fecha: 12 de agosto a 1 de septiembre",
+"msg_date_05_feb_to": "Fecha: 05 de febrero a 14 de marzo",
+"lbl_beverages": "Bebidas",
+"msg_date_17_aug_to": "Fecha: 17 de agosto a 14 de septiembre",
+"msg_date_08_aug_to": "Fecha: 08 de agosto a 18 de septiembre",
+"msg_low_carbohydrate": "Plan bajo en carbohidratos",
+"lbl_vegetarian": "Vegetariano",
+"lbl_pending": "Pendiente",
+"lbl_complate": "Completo",
+"msg_date_02_jan_to": "Fecha: 02 de enero a 01 de febrero",
+"msg_an_experimental": "Una dieta experimental",
+"msg_course_dinner_menu": "Menú de cena por curso",
+"msg_date_15_may_to": "Fecha: 15 de mayo a 17 de julio",
 
-  // Running plan details Screen
-  "lbl_sun_16_may": "Sun 16 May",
-  "lbl_plan_details": "Plan details",
-  "msg_2_salad_1_snack": "2 Salad + 1 Snack",
-  "msg_download_invoice": "Download invoice",
-  "lbl_day_per_week": "Day per week",
-  "msg_5_days_sunday_off": "5 Days (Sunday off)",
-  "lbl_start_date": "Start date",
-  "lbl_end_date": "End date",
-  "msg_without_brakfast": "Without brakfast",
-  "lbl_duration": "Duration",
+// Detalles del plan de carrera
+"lbl_sun_16_may": "Dom 16 mayo",
+"lbl_plan_details": "Detalles del plan",
+"msg_2_salad_1_snack": "2 Ensaladas + 1 Merienda",
+"msg_download_invoice": "Descargar factura",
+"lbl_day_per_week": "Días por semana",
+"msg_5_days_sunday_off": "5 Días (Domingo libre)",
+"lbl_start_date": "Fecha de inicio",
+"lbl_end_date": "Fecha de fin",
+"msg_without_brakfast": "Sin desayuno",
+"lbl_duration": "Duración",
 
-  // Profile Screen
-  "lbl_log_out": "Log out",
+// Pantalla de perfil
+"lbl_log_out": "Cerrar sesión",
 
-  // Edit profile Screen
-  "lbl_save": "Save",
+// Pantalla de editar perfil
+"lbl_save": "Guardar",
 
-  // About us Screen
-  "msg_amet_minim_mollit":
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-  "msg_in_a_laoreet_purus":
-      "In a laoreet purus. Integer turpis quam, laoreet id orci nec, ultrices lacinia nunc. Aliquam erat volutpat. Curabitur fringilla in purus eget egestas. Etiam quis.",
-  "msg_amet_minim_mollit2":
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. ",
-  "msg_water_is_absolutely": "Water is absolutely essential for healthy life",
-  "msg_ivorem_ipsum_dolor":
-      "IVorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. ",
-  "msg_lorem_ipsum_dolor":
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. ",
+// Pantalla sobre nosotros
+"msg_amet_minim_mollit": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+"msg_in_a_laoreet_purus": "In a laoreet purus. Integer turpis quam, laoreet id orci nec, ultrices lacinia nunc. Aliquam erat volutpat. Curabitur fringilla in purus eget egestas. Etiam quis.",
+"msg_amet_minim_mollit2": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
+"msg_water_is_absolutely": "El agua es absolutamente esencial para una vida saludable",
+"msg_ivorem_ipsum_dolor": "IVorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.",
+"msg_lorem_ipsum_dolor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.",
 
-  // Help Screen
-  "msg_how_many_times_to": "How many times to eat a day?",
-  "msg_what_is_the_balance": "What is the balance diet?",
-  "msg_how_to_eat_better": "How to eat better?",
-  "msg_what_are_the_six": "What are the six food groups?",
-  "msg_what_is_the_time": "What is the time limit diet?",
-  "msg_what_are_the_best": "What are the best foods to eat?",
-  "msg_balanced_diet_contains":
-      "Balanced diet contains all of the essential elements that the human body needs. Carbohydrates, lipids, vitamins, minerals, proteins, fiber, and water",
+// Pantalla de ayuda
+"msg_how_many_times_to": "¿Cuántas veces debo comer al día?",
+"msg_what_is_the_balance": "¿Qué es una dieta balanceada?",
+"msg_how_to_eat_better": "¿Cómo comer mejor?",
+"msg_what_are_the_six": "¿Cuáles son los seis grupos de alimentos?",
+"msg_what_is_the_time": "¿Qué es la dieta con límite de tiempo?",
+"msg_what_are_the_best": "¿Cuáles son los mejores alimentos para comer?",
+"msg_balanced_diet_contains": "Una dieta balanceada contiene todos los elementos esenciales que el cuerpo humano necesita. Carbohidratos, lípidos, vitaminas, minerales, proteínas, fibra y agua",
 
-  // Feedback Screen
-  "msg_what_do_you_like": "What do you like about this app?",
-  "msg_write_your_feedback": "Write your feedback...", "lbl_submit": "Submit",
+// Pantalla de comentarios
+"msg_what_do_you_like": "¿Qué te gusta de esta aplicación?",
+"msg_write_your_feedback": "Escribe tu comentario...",
+"lbl_submit": "Enviar",
 
-  // Privacy policy Screen
-  "msg_disclosure_of_your": "Disclosure of your data",
-  "msg_lorem_ipsum_dolor2":
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec ac odio tempor orci dapibus ultrices in iaculis lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec ac odio tempor orci dapibus ultrices in iaculis Ac auctor augue mauris augue neque gravida. Velit ut tortor pretium viverra suspendisse. Volutpat commodo sed egestas egestas fringilla phasellus faucibus. ",
-  "msg_use_of_your_personal": "Use of your personal data",
-  "msg_types_of_data_we": "Types of data we collect",
-  "msg_torem_ipsum_dolor":
-      "Torem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum ",
+// Pantalla de política de privacidad
+"msg_disclosure_of_your": "Divulgación de tus datos",
+"msg_lorem_ipsum_dolor2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec ac odio tempor orci dapibus ultrices in iaculis lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec ac odio tempor orci dapibus ultrices in iaculis Ac auctor augue mauris augue neque gravida. Velit ut tortor pretium viverra suspendisse. Volutpat commodo sed egestas egestas fringilla phasellus faucibus.",
+"msg_use_of_your_personal": "Uso de tus datos personales",
+"msg_types_of_data_we": "Tipos de datos que recopilamos",
+"msg_torem_ipsum_dolor": "Torem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum",
 
-  // Premium Screen
-  "msg_renews_after_every2": "Renews after every 6 months",
-  "lbl_150_00": "\$150.00",
-  "lbl_100_00": "\$100.00",
-  "msg_renews_after_every3": "Renews after every 12 months",
-  "lbl_life_time": "Life time",
-  "lbl_6_month": "6 Month",
-  "lbl_50_00": "\$50.00",
-  "lbl_12_month": "12 Month",
-  "lbl_pay_now": "Pay now",
-  "msg_renews_after_every": "Renews after every 3 months",
-  "msg_one_time_payment": "One time payment only",
-  "lbl_200_00": "\$200.00",
-  "lbl_3_month": "3 Month",
+// Pantalla premium
+"msg_renews_after_every2": "Se renueva cada 6 meses",
+"lbl_150_00": "\$150.00",
+"lbl_100_00": "\$100.00",
+"msg_renews_after_every3": "Se renueva cada 12 meses",
+"lbl_life_time": "Toda la vida",
+"lbl_6_month": "6 Meses",
+"lbl_50_00": "\$50.00",
+"lbl_12_month": "12 Meses",
+"lbl_pay_now": "Pagar ahora",
+"msg_renews_after_every": "Se renueva cada 3 meses",
+"msg_one_time_payment": "Pago único",
+"lbl_200_00": "\$200.00",
+"lbl_3_month": "3 Meses",
+
 
   // Common String
   "lbl_continue": "Continuar",

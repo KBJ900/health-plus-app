@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "338859915170",
+    "project_id": "health-5dc08",
+    "storage_bucket": "health-5dc08.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338859915170:android:0d22535912be2dd8c524fb",
+        "android_client_info": {
+          "package_name": "com.kevalsapplication.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCzz5CQVdp_K1XS2AH5PmEEG99rnpz4LI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -80,7 +80,7 @@ class HomeScreenPage extends StatelessWidget {
                       ),
                       Text(
                         // Muestra otro texto en pantalla.
-                        'john abram', // Texto que se mostrará.
+                        'john hola', // Texto que se mostrará.
                         style: TextStyle(
                             // Define el estilo del texto.
                             color: AppColor.grey400, // Color del texto.

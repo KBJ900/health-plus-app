@@ -1,5 +1,8 @@
 plugins{
     id 'com.android.application'
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
     id 'kotlin-android'
 }
 def localProperties = new Properties()
@@ -48,7 +51,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.kevalsapplication.app"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 34
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
