@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:diet_recipe_app/core/app_export.dart';
-import 'package:diet_recipe_app/presentation/home_screen_container_screen/controller/home_screen_container_controller.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/home_screen_container_screen/controller/home_screen_container_controller.dart';
 
 import '../../data/pref_data/pref_data.dart';
 import '../../generated/assets.dart';
 
 // ignore: must_be_immutable
-class CustomBottomBar extends StatelessWidget {
-  CustomBottomBar({
+class CustomBottomBarDoctor extends StatelessWidget {
+  CustomBottomBarDoctor({
     Key? key,
     this.onChanged,
   }) : super(
@@ -57,7 +57,7 @@ class CustomBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeScreenContainerController>(
+    return GetBuilder<HomeDoctorContainerController>(
       builder: (controller) {
         return Container(
           height: getSize(Platform.isIOS?130:100),
@@ -178,7 +178,7 @@ class CustomBottomBar extends StatelessWidget {
                       height: getSize(8),
                     ),
                     Text(
-                      "Our menu".tr,
+                      "Pacientes",
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                       style: theme.textTheme.bodyMedium!.copyWith(
@@ -213,7 +213,7 @@ class CustomBottomBar extends StatelessWidget {
                         height: getSize(8),
                       ),
                       Text(
-                        'Our menu',
+                        'Pacientes',
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.left,
                         style: theme.textTheme.bodyMedium!.copyWith(
@@ -231,76 +231,61 @@ class CustomBottomBar extends StatelessWidget {
 
 
               ),
-              BottomNavigationBarItem(
-                icon: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CustomImageView(
-                      svgPath: Assets.imagesImgNavmyplan,
-                      height: getSize(
-                        24,
-                      ),
-                      width: getSize(
-                        24,
-                      ),
-                      color: Color(0xFF7C7C7C),
-                      margin: getMargin(
-                        top: 0,
-                      ),
-                    ),
-                    SizedBox(
-                      height: getSize(8),
-                    ),
-                    Text(
-                      "My plan".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: theme.textTheme.bodyMedium!.copyWith(
-                        color: Color(0xFF7C7C7C),
-                      ),
-                    ),
-                  ],
-                ),
-                activeIcon: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CustomImageView(
-                        svgPath: Assets.imagesImgNavmyplanPrimary,
-                        height: getSize(
-                          24,
-                        ),
-                        width: getSize(
-                          24,
-                        ),
-                        color: Color(0xFF5E9920),
-                        margin: getMargin(
-                          top: 0,
-                        ),
-                      ),
-                      SizedBox(
-                        height: getSize(8),
-                      ),
-                      Text(
-                        'My plan',
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.left,
-                        style: theme.textTheme.bodyMedium!.copyWith(
-                          color: Color(0xFF5E9920),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                label: '',
-              ),
+BottomNavigationBarItem(
+  icon: Column(
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Icon(
+        Icons.medical_services, // Ícono de servicios médicos (puedes elegir otro ícono)
+        size: 24,
+        color: Color(0xFF7C7C7C),
+      ),
+      SizedBox(
+        height: getSize(8),
+      ),
+      Text(
+        "Seguros",
+        overflow: TextOverflow.ellipsis,
+        textAlign: TextAlign.left,
+        style: theme.textTheme.bodyMedium!.copyWith(
+          color: Color(0xFF7C7C7C),
+        ),
+      ),
+    ],
+  ),
+  activeIcon: Container(
+    decoration: BoxDecoration(
+      color: Colors.transparent,
+    ),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Icon(
+          Icons.medical_services, // Mismo ícono activo
+          size: 24,
+          color: Color(0xFF5E9920),
+        ),
+        SizedBox(
+          height: getSize(8),
+        ),
+        Text(
+          'Seguros',
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.left,
+          style: theme.textTheme.bodyMedium!.copyWith(
+            color: Color(0xFF5E9920),
+          ),
+        ),
+      ],
+    ),
+  ),
+  label: '',
+),
+
               BottomNavigationBarItem(
                 icon: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -382,7 +367,7 @@ class CustomBottomBar extends StatelessWidget {
           ),
         );
       },
-      init: HomeScreenContainerController(),
+      init: HomeDoctorContainerController(),
     );
   }
 }

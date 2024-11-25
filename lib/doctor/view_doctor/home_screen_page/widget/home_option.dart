@@ -7,7 +7,7 @@ import '../../../../routes/app_routes.dart';
 import '../../../../theme/app_decoration.dart';
 import '../../../../theme/theme_helper.dart';
 import '../../../../widgets/custom_icon_button.dart';
-import '../../../widgets/custom_image_view.dart';
+import '../../../widgets_doctor/custom_image_view.dart';
 
 class HomeOption extends StatelessWidget {
   final String? txt;

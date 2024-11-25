@@ -5,7 +5,7 @@ import 'package:diet_recipe_app/theme/app_decoration.dart';
 import '../../../../core/utils/image_constant.dart';
 import '../../../../theme/custom_text_style.dart';
 import '../../../../theme/theme_helper.dart';
-import '../../../widgets/custom_image_view.dart';
+import '../../../widgets_doctor/custom_image_view.dart';
 
 class WhatLunchContainer extends StatelessWidget {
   final String? img;

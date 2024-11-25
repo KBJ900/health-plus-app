@@ -104,6 +104,10 @@ import '../presentation/splash_screen/splash_screen.dart';
 
 /// New 
 import 'package:diet_recipe_app/doctor/view_doctor/home_screen_container_screen/home_screen_doctor.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/list_pacientes/view/list_Pacientes.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/list_pacientes/view/list_companies.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/registros/view/create_registros.dart';
+
 
 class AppRoutes {
   static const String splaceScreen = '/splace_screen';
@@ -166,6 +170,13 @@ class AppRoutes {
   static const String menuPage = '/menu_page';
 
   static const String menuTabContainerPage = '/menu_tab_container_page';
+
+  static const String listPacientes = '/list_pacientes';
+
+  static const String listCompanies = '/list_companies';
+
+  static const String createRegistro = '/create_registros';
+
 
   static const String detailsScreen = '/details_screen';
 
@@ -390,6 +401,27 @@ class AppRoutes {
       transitionDuration: Duration(milliseconds: 500),
     ),
     
+      GetPage(
+      name: listPacientes,
+      page: () => ListPacientes(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+
+      GetPage(
+      name: listCompanies,
+      page: () => ListCompanies(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+
+     GetPage(
+      name: createRegistro,
+      page: () => CreateRegistro(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+
     GetPage(
       name: whatForLunchScreen,
       page: () => WhatForLunchScreen(),

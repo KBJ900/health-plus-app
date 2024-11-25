@@ -6,7 +6,7 @@ import '../../../../core/utils/image_constant.dart';
 import '../../../../core/utils/size_utils.dart';
 import '../../../../theme/custom_text_style.dart';
 import '../../../../theme/theme_helper.dart';
-import '../../../widgets/custom_image_view.dart';
+import '../../../widgets_doctor/custom_image_view.dart';
 
 class HealthyDoctorMenuBanner extends StatelessWidget {
   final String?title;

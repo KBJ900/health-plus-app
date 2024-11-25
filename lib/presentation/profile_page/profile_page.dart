@@ -60,7 +60,7 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start, // Alinea desde la parte superior.
                       children: [
                         Text(
-                          "lbl_john_abram2".tr, // Nombre traducido.
+                          "lbl_john_abram2 xd".tr, // Nombre traducido.
                           style: theme.textTheme.titleMedium, // Estilo del nombre.
                         ),
                         Padding(
@@ -101,13 +101,7 @@ class ProfilePage extends StatelessWidget {
               optionName: 'Política de privacidad', // Nombre de la opción traducido.
               optionImg: ImageConstant.imgCheckmark, // Imagen para la opción de política de privacidad.
             ),
-            ProfileOpe(
-              onTapOption: () {
-                Get.toNamed(AppRoutes.premiumScreen); // Navega a la pantalla Premium.
-              },
-              optionName: 'Premium', // Nombre de la opción traducido.
-              optionImg: ImageConstant.imgMap, // Imagen para la opción Premium.
-            ),
+          
 
             // ============================= 
             // 🟩 SECCIÓN: Cierre de Sesión (Botón) 

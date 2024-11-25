@@ -10,15 +10,20 @@ import 'package:diet_recipe_app/core/app_export.dart'; // Importación de config
 import 'package:diet_recipe_app/doctor/view_doctor/home_screen_page/home_doctor_page.dart'; // Pantalla principal.
 
 import 'package:diet_recipe_app/presentation/menu_page/menu_page.dart'; // Pantalla de menú.
+
 import 'package:diet_recipe_app/presentation/menu_tab_container_page/menu_tab_container_page.dart'; // Contenedor de pestañas del menú.
 import 'package:diet_recipe_app/presentation/my_plan_page/my_plan_page.dart'; // Pantalla de planes del usuario.
 import 'package:diet_recipe_app/presentation/profile_page/profile_page.dart'; // Perfil del usuario.
-import 'package:diet_recipe_app/widgets/custom_bottom_app_bar.dart'; // Barra inferior personalizada.
+
+import 'package:diet_recipe_app/doctor/widgets_doctor/custom_button_app_bar.dart'; // Barra inferior personalizada.
 import '../../../data/pref_data/pref_data.dart'; // Datos de preferencias del usuario.
 import '../../../generated/assets.dart'; // Recursos generados, como imágenes y activos.
 import '../../../presentation/choose_your_plan_standard_tab_container_screen/choose_your_plan_standard_tab_container_screen.dart'; // Pantalla para elegir el plan.
 import 'controller/home_screen_container_controller.dart'; // Controlador de la pantalla principal.
 
+import '../list_pacientes/view/list_pacientes.dart';
+import '../list_pacientes/view/list_companies.dart';
+import '../registros/view/create_registros.dart';
 
 // =============================
 // 🟩 SECCIÓN: Definición de clase principal
@@ -180,7 +185,7 @@ class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
             ),
           ),
           
-          bottomNavigationBar: CustomBottomBar(onChanged: (BottomBarEnum type) {
+          bottomNavigationBar: CustomBottomBarDoctor(onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type), id: 1); // Redirige según la opción seleccionada en la barra inferior.
           })
         ),
@@ -215,16 +220,22 @@ class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
 
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
+
       case AppRoutes.homeDoctorPage:
         return HomeDoctorPage();
-      case AppRoutes.menuTabContainerPage:
-        return MenuTabContainerPage();
-      case AppRoutes.chooseYourPlanStandardTabContainerScreen:
-        return ChooseYourPlanStandardTabContainerScreen();
+
+      case AppRoutes.listPacientes:
+        return ListPacientes();
+
+      case AppRoutes.createRegistro:
+        return CreateRegistro();
+
       case AppRoutes.myPlanPage:
         return MyPlanPage();
-      case AppRoutes.profilePage:
-        return ProfilePage();
+
+      case AppRoutes.listCompanies:
+        return ListCompanies();
+
       default:
         return DefaultWidget();
     }
@@ -236,9 +247,9 @@ class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
 
   List<Widget> pageList = [
     HomeDoctorPage(), // Página de inicio.
-    MenuPage(), // Página de menú.
-    ChooseYourPlanStandardTabContainerScreen(), // Página para elegir plan.
-    MyPlanPage(), // Página de planes del usuario.
+    ListPacientes(), // Página de menú.
+    CreateRegistro(), // Página para elegir plan.
+    ListCompanies(), // Página de planes del usuario.
     ProfilePage(), // Página de perfil.
   ];
 }

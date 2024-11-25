@@ -17,50 +17,80 @@ class HomeDoctorPage extends StatelessWidget {
       backgroundColor: Colors.grey[100], // Color de fondo general
       body: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Bienvenido',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        'Test doctor',
-                        style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+        Padding(
+  padding: EdgeInsets.all(20),
+  
+  child: Container(
+    decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 11, 103, 116), // Fondo verde personalizado
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(20), // Esquinas inferiores redondeadas
+        bottomRight: Radius.circular(20),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black26, // Sombra ligera
+          blurRadius: 10, // Difuminación de la sombra
+          offset: Offset(0, 5), // Desplazamiento de la sombra
+        ),
+      ],
+    ),
+    padding: EdgeInsets.all(20), // Espaciado interno
+    alignment: Alignment.center, // Centrar el contenido
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'Bienvenido',
+          style: TextStyle(
+            color: Colors.white, // Texto en blanco para contraste
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
           ),
-          // Subtítulo "Lista de Pacientes"
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text(
-              'Lista de Expedientes',  // Subtítulo
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-              ),
-            ),
+        ),
+        SizedBox(height: 10), // Espaciado entre textos
+        Text(
+          'Test doctor',
+          style: TextStyle(
+            color: Colors.white70, // Texto ligeramente más claro
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
           ),
+        ),
+      ],
+    ),
+  ),
+),
+
+// Subtítulo "Lista de Expedientes"
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+  child: Container(
+    decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 11, 103, 116), // Fondo verde personalizado
+      borderRadius: BorderRadius.circular(10), // Esquinas redondeadas
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black26, // Sombra ligera
+          blurRadius: 5, // Difuminación de la sombra
+          offset: Offset(0, 3), // Desplazamiento de la sombra
+        ),
+      ],
+    ),
+    padding: EdgeInsets.all(10), // Espaciado interno
+    alignment: Alignment.center, // Centrar el texto
+    child: Text(
+      'Lista de Expedientes', // Subtítulo
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.white, // Texto en blanco para contraste
+      ),
+    ),
+  ),
+),
+
           // Lista de usuarios con un scroll
           Expanded(
             child: ListView.builder(
