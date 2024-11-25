@@ -22,14 +22,14 @@ import 'controller/home_screen_container_controller.dart'; // Controlador de la 
 // 🟩 SECCIÓN: Definición de clase principal
 // =============================
 
-class HomeScreenDoctor extends GetWidget<HomeScreenContainerController> {
+class HomeScreenDoctor extends GetWidget<HomeDoctorContainerController> {
   HomeScreenDoctor({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context); // Obtiene datos del tamaño de la pantalla.
     
-    return GetBuilder<HomeScreenContainerController>(builder: (controller) {
+    return GetBuilder<HomeDoctorContainerController>(builder: (controller) {
       return WillPopScope( // Prevenimos la acción por defecto del botón de retroceso.
         onWillPop: () { 
           if (PrefData.currentIndex == 0) { // Verifica si estamos en la pantalla principal.
@@ -183,7 +183,7 @@ class HomeScreenDoctor extends GetWidget<HomeScreenContainerController> {
           })
         ),
       );
-    }, init: HomeScreenContainerController()); // Inicializa el controlador de la pantalla.
+    }, init: HomeDoctorContainerController()); // Inicializa el controlador de la pantalla.
   }
 
   // =============================

@@ -8,7 +8,7 @@ class HomeScreenPage extends StatelessWidget {
     // Datos de ejemplo para la lista de usuarios
     final List<Map<String, String>> users = List.generate(20, (index) {
       return {
-        'name': 'Usuario $index',
+        'name': 'Expediente $index',
         'email': 'usuario$index@example.com',
       };
     });
@@ -53,7 +53,7 @@ class HomeScreenPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Lista de Pacientes',  // Subtítulo
+              'Lista de Expedientes',  // Subtítulo
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,

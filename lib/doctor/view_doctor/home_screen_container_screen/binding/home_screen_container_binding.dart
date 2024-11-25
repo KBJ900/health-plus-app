@@ -8,6 +8,6 @@ import 'package:get/get.dart';
 class HomeScreenContainerBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => HomeScreenContainerController());
+    Get.lazyPut(() => HomeDoctorContainerController());
   }
 }

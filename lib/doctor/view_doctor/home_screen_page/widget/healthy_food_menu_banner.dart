@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:diet_recipe_app/theme/app_decoration.dart';
 
-import '../../../core/utils/image_constant.dart';
-import '../../../core/utils/size_utils.dart';
-import '../../../theme/custom_text_style.dart';
-import '../../../theme/theme_helper.dart';
+import '../../../../core/utils/image_constant.dart';
+import '../../../../core/utils/size_utils.dart';
+import '../../../../theme/custom_text_style.dart';
+import '../../../../theme/theme_helper.dart';
 import '../../../widgets/custom_image_view.dart';
 
-class HealthyFoodMenuBanner extends StatelessWidget {
+class HealthyDoctorMenuBanner extends StatelessWidget {
   final String?title;
-  const HealthyFoodMenuBanner({ this.title});
+  const HealthyDoctorMenuBanner({ this.title});
 
   @override
   Widget build(BuildContext context) {

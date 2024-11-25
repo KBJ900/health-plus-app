@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:diet_recipe_app/core/utils/size_utils.dart';
 
-import '../../../core/utils/image_constant.dart';
-import '../../../theme/app_decoration.dart';
-import '../../../theme/custom_text_style.dart';
-import '../../../theme/theme_helper.dart';
-import '../../../widgets/custom_icon_button.dart';
+import '../../../../core/utils/image_constant.dart';
+import '../../../../theme/app_decoration.dart';
+import '../../../../theme/custom_text_style.dart';
+import '../../../../theme/theme_helper.dart';
+import '../../../../widgets/custom_icon_button.dart';
 import '../../../widgets/custom_image_view.dart';
 
 class RunningCard extends StatelessWidget {

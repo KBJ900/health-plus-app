@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:diet_recipe_app/core/app_export.dart';
 import 'package:diet_recipe_app/data/listdata/app_listdata.dart';
 import 'package:diet_recipe_app/data/pref_data/pref_data.dart';
-import 'package:diet_recipe_app/presentation/home_screen_page/widget/healthy_food_menu_banner.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/home_screen_page/widget/healthy_food_menu_banner.dart';
 import 'package:diet_recipe_app/presentation/home_screen_page/widget/home_option.dart';
 import 'package:diet_recipe_app/presentation/home_screen_page/widget/running_card.dart';
 import 'package:diet_recipe_app/presentation/home_screen_page/widget/what_lunch_container.dart';
@@ -194,7 +194,7 @@ class HomeScreenPage extends StatelessWidget {
                           .update(); // Actualiza el estado del controlador.
                     },
                     child:
-                        HealthyFoodMenuBanner()), // Muestra un banner personalizado.
+                        HealthyDoctorMenuBanner()), // Muestra un banner personalizado.
               ],
             ),
           )
