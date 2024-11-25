@@ -103,7 +103,7 @@ import '../presentation/splash_screen/binding/splace_binding.dart';
 import '../presentation/splash_screen/splash_screen.dart';
 
 /// New 
-import 'package:diet_recipe_app/presentation/view_doctor/home/home_screen_doctor.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/home/home_screen_doctor.dart';
 
 class AppRoutes {
   static const String splaceScreen = '/splace_screen';
