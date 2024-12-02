@@ -1,8 +1,7 @@
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/compa%C3%B1ia_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/expedientes_screen.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/pacientes_screen.dart';
-import 'package:flutter/material.dart';
-
 
 class CreateRegistro extends StatefulWidget {
   const CreateRegistro({Key? key}) : super(key: key);
@@ -18,8 +17,8 @@ class _CreateRegistroState extends State<CreateRegistro> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.jpg'), // Ruta de la imagen
-            fit: BoxFit.cover, // Asegura que la imagen cubra todo el fondo
+            image: AssetImage('assets/images/background.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(
@@ -29,34 +28,32 @@ class _CreateRegistroState extends State<CreateRegistro> {
               padding: const EdgeInsets.all(20),
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 11, 103, 116), // Fondo verde con opacidad
+                  color: const Color.fromARGB(255, 11, 103, 116),
                   borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20), // Esquinas inferiores redondeadas
+                    bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
                   boxShadow: const [
                     BoxShadow(
-                      color: Colors.black26, // Sombra ligera
-                      blurRadius: 10, // Difuminación de la sombra
-                      offset: Offset(0, 5), // Desplazamiento de la sombra
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.all(20), // Espaciado interno
-                alignment: Alignment.center, // Centrar el contenido
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.center,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     Text(
                       'Seguros',
                       style: TextStyle(
-                        color: Colors.white, // Texto en blanco para contraste
+                        color: Colors.white,
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(height: 10), // Espaciado entre textos
+                    SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -67,129 +64,107 @@ class _CreateRegistroState extends State<CreateRegistro> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 11, 103, 116), // Fondo verde con opacidad
-                  borderRadius: BorderRadius.circular(10), // Esquinas redondeadas
+                  color: const Color.fromARGB(255, 11, 103, 116),
+                  borderRadius: BorderRadius.circular(10),
                   boxShadow: const [
                     BoxShadow(
-                      color: Colors.black26, // Sombra ligera
-                      blurRadius: 5, // Difuminación de la sombra
-                      offset: Offset(0, 3), // Desplazamiento de la sombra
+                      color: Colors.black26,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.all(10), // Espaciado interno
-                alignment: Alignment.center, // Centrar el texto
+                padding: const EdgeInsets.all(10),
+                alignment: Alignment.center,
                 child: const Text(
-                  'Crea tus Registros', // Subtítulo
+                  'Crea tus Registros',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white, // Texto en blanco para contraste
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
 
-            // Botones: Expediente, Paciente, Compañía
-            Expanded(  // Usar Expanded para distribuir el espacio mejor
+            // Cards
+            Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Column(
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                   children: [
-                    // Botón Expediente
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Navegar a la pantalla de Expedientes
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CreateExpedientes(), // Navegar a la vista
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 6, 122, 55),
-                          minimumSize: const Size(double.infinity, 60), // Altura fija de 60 px
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text(
-                          'Expediente',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                    _buildCard(
+                      context,
+                      'Expediente',
+                      Icons.folder_open,
+                      const Color.fromARGB(255, 87, 122, 6),
+                      CreateExpedientes(),
                     ),
-                    const SizedBox(height: 15),
-                    // Botón Paciente
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Navegar a la pantalla de Expedientes
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CreatePacientes(), // Navegar a la vista
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 136, 76, 8),
-                          minimumSize: const Size(double.infinity, 60), // Altura fija de 60 px
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text(
-                          'Paciente',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                    _buildCard(
+                      context,
+                      'Crear Plan',
+                      Icons.add_chart,
+                      const Color.fromARGB(255, 6, 122, 55),
+                      null, // Reemplaza con tu vista para "Crear Plan"
                     ),
-                    const SizedBox(height: 15),
-                    // Botón Compañía
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                       onPressed: () {
-                          // Navegar a la pantalla de Expedientes
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CreateCompania(), // Navegar a la vista
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 6, 90, 116),
-                          minimumSize: const Size(double.infinity, 60), // Altura fija de 60 px
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text(
-                          'Compañía',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                    _buildCard(
+                      context,
+                      'Paciente',
+                      Icons.person,
+                      const Color.fromARGB(255, 136, 76, 8),
+                      CreatePacientes(),
+                    ),
+                    _buildCard(
+                      context,
+                      'Compañía',
+                      Icons.business,
+                      const Color.fromARGB(255, 6, 90, 116),
+                      CreateCompania(),
                     ),
                   ],
                 ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCard(BuildContext context, String title, IconData icon, Color color, Widget? targetScreen) {
+    return GestureDetector(
+      onTap: () {
+        if (targetScreen != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => targetScreen),
+          );
+        }
+      },
+      child: Card(
+        color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        elevation: 5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 40,
+              color: Colors.white,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],

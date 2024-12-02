@@ -60,7 +60,7 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start, // Alinea desde la parte superior.
                       children: [
                         Text(
-                          "lbl_john_abram2 xd".tr, // Nombre traducido.
+                          "lbl_john_abram2".tr, // Nombre traducido.
                           style: theme.textTheme.titleMedium, // Estilo del nombre.
                         ),
                         Padding(
