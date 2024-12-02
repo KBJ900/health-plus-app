@@ -108,6 +108,7 @@ import 'package:diet_recipe_app/doctor/view_doctor/home_screen_container_screen/
 import 'package:diet_recipe_app/doctor/view_doctor/list_pacientes/view/list_Pacientes.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/list_pacientes/view/list_companies.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/create_registros.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/registros/view/pacientes_screen.dart';
 
 
 class AppRoutes {
@@ -177,6 +178,8 @@ class AppRoutes {
   static const String listCompanies = '/list_companies';
 
   static const String createRegistro = '/create_registros';
+  
+  static const String createPacientes = '/pacientes_screen';
 
   static const String createExpediente = '/expedientes_screen';
 
@@ -427,6 +430,13 @@ class AppRoutes {
      GetPage(
       name: createExpediente,
       page: () => CreateExpedientes(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+
+     GetPage(
+      name: createPacientes,
+      page: () => CreatePacientes(),
       transition: Transition.cupertino,
       transitionDuration: Duration(milliseconds: 500),
     ),
