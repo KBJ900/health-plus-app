@@ -23,7 +23,7 @@ import 'controller/home_screen_container_controller.dart'; // Controlador de la 
 
 import '../list_pacientes/view/list_pacientes.dart';
 import '../list_pacientes/view/list_companies.dart';
-import '../registros/view/create_registros.dart';
+import '../registros/create_registros.dart';
 
 // =============================
 // 🟩 SECCIÓN: Definición de clase principal

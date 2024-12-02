@@ -1,4 +1,5 @@
 
+import 'package:diet_recipe_app/doctor/view_doctor/registros/view/expedientes_screen.dart';
 import 'package:diet_recipe_app/presentation/onboarding_one_screen/onboarding_one_screen.dart';
 import 'package:diet_recipe_app/presentation/onboarding_one_screen/binding/onboarding_one_binding.dart';
 import 'package:diet_recipe_app/presentation/onboarding_two_screen/onboarding_two_screen.dart';
@@ -106,7 +107,7 @@ import '../presentation/splash_screen/splash_screen.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/home_screen_container_screen/home_screen_doctor.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/list_pacientes/view/list_Pacientes.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/list_pacientes/view/list_companies.dart';
-import 'package:diet_recipe_app/doctor/view_doctor/registros/view/create_registros.dart';
+import 'package:diet_recipe_app/doctor/view_doctor/registros/create_registros.dart';
 
 
 class AppRoutes {
@@ -177,6 +178,7 @@ class AppRoutes {
 
   static const String createRegistro = '/create_registros';
 
+  static const String createExpediente = '/expedientes_screen';
 
   static const String detailsScreen = '/details_screen';
 
@@ -418,6 +420,13 @@ class AppRoutes {
      GetPage(
       name: createRegistro,
       page: () => CreateRegistro(),
+      transition: Transition.cupertino,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+
+     GetPage(
+      name: createExpediente,
+      page: () => CreateExpedientes(),
       transition: Transition.cupertino,
       transitionDuration: Duration(milliseconds: 500),
     ),

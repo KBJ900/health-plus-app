@@ -30,4 +30,28 @@ class PatientService {
       rethrow; // Propaga el error.
     }
   }
+
+  // Método para editar la información de un paciente.
+  Future<String> editPatient(int patientId, Map<String, dynamic> data) async {
+    final url = Uri.parse("$baseUrl/patients/patientEdit/$patientId"); // Construye la URL específica.
+    final headers = {'Content-Type': 'application/json'};
+
+    try {
+      // Realiza la solicitud PUT.
+      final response = await http.put(
+        url,
+        headers: headers,
+        body: jsonEncode(data),
+      );
+
+      // Verifica el estado de la respuesta.
+      if (response.statusCode == 200) {
+        return 'Paciente actualizado exitosamente';
+      } else {
+        throw Exception('Error al actualizar el paciente: ${response.body}');
+      }
+    } catch (e) {
+      rethrow; // Propaga el error.
+    }
+  }
 }

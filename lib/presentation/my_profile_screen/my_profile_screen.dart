@@ -76,7 +76,7 @@ class MyProfileScreen extends GetWidget<MyProfileController> {
                                         style: theme.textTheme.titleMedium),
                                     Padding(
                                         padding: getPadding(top: 11),
-                                        child: Text("msg_johnabram_gmail_com".tr,
+                                        child: Text("msg_johnabram_gmail_com ".tr,
                                             style: theme.textTheme.bodyLarge))
                                   ]))
                         ]),
