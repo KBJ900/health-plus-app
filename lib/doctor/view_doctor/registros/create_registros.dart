@@ -1,3 +1,4 @@
+import 'package:diet_recipe_app/doctor/view_doctor/registros/view/compa%C3%B1ia_screen.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/expedientes_screen.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/pacientes_screen.dart';
 import 'package:flutter/material.dart';
@@ -161,8 +162,14 @@ class _CreateRegistroState extends State<CreateRegistro> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: ElevatedButton(
-                        onPressed: () {
-                          print("Botón Compañía presionado");
+                       onPressed: () {
+                          // Navegar a la pantalla de Expedientes
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateCompania(), // Navegar a la vista
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 6, 90, 116),

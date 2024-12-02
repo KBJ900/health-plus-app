@@ -34,4 +34,29 @@ class CompanyService {
       throw Exception('Failed to edit company: ${response.reasonPhrase}');
     }
   }
+
+Future<bool> createCompany(Map<String, dynamic> companyData) async {
+  final String url = "$_baseUrl/company";
+
+  try {
+    final response = await http.post(
+      Uri.parse(url),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(companyData),
+    );
+
+    if (response.statusCode == 200) {
+      return true; // Indica que la operación fue exitosa
+    } else {
+      // Aquí imprimimos la respuesta completa para ver qué nos está enviando el servidor
+      print('Error: ${response.statusCode} - ${response.body}');
+      throw Exception('Failed to create company: ${response.reasonPhrase}');
+    }
+  } catch (e) {
+    print('Error al hacer la solicitud: $e');
+    throw Exception('Failed to create company');
+  }
+}
+
+
 }
