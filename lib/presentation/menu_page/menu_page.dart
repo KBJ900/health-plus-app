@@ -114,6 +114,9 @@ class MenuPage extends StatelessWidget {
                     controller: controller.tabviewController,
                       children: [
                     OurMenuList(),
+                    OurMenuList(),
+                    OurMenuList(),
+                    OurMenuList(),
                   ]),
                 )
 
