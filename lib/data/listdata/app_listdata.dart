@@ -181,7 +181,7 @@ class AppListData{
     return [
       OurMenuItemModel(
         id: 0,
-        img: ImageConstant.oM1,
+        img: ImageConstant.oM2,
         name: 'Fresh green salad',
         price: 14.00,
         protein: '35g',

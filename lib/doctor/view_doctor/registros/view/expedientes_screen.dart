@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 
 class CreateExpedientes extends StatefulWidget {
   const CreateExpedientes({Key? key}) : super(key: key);
@@ -12,16 +13,16 @@ class CreateExpedientes extends StatefulWidget {
 
 class _CreateExpedientes extends State<CreateExpedientes> {
   final _formKey = GlobalKey<FormState>();
-    final TextEditingController _patientNameController = TextEditingController();
-
   final TextEditingController _letterNumberController = TextEditingController();
   final TextEditingController _doctorIdController = TextEditingController();
   final TextEditingController _insuranceIdController = TextEditingController();
   final TextEditingController _patientIdController = TextEditingController();
   final TextEditingController _serviceDateController = TextEditingController();
   final TextEditingController _statusController = TextEditingController();
+  final TextEditingController _fileNameController = TextEditingController();
+    final TextEditingController _patientNameController = TextEditingController();
 
-  
+
   File? _file;
   List<String> _insuranceCompanies = [];
   List<String> _filteredCompanies = [];
@@ -35,9 +36,8 @@ class _CreateExpedientes extends State<CreateExpedientes> {
   void initState() {
     super.initState();
     _fetchInsuranceCompanies();
-        _fetchPatients();
+    _fetchPatients();
     _fetchDoctors();
-
   }
 
   Future<void> _fetchDoctors() async {
@@ -49,8 +49,7 @@ class _CreateExpedientes extends State<CreateExpedientes> {
         setState(() {
           _doctors = data.map((item) => item as Map<String, dynamic>).toList();
           _doctorNames = _doctors
-              .map((doctor) =>
-                  '${doctor["first_name"]} ${doctor["last_name"]}')
+              .map((doctor) => '${doctor["first_name"]} ${doctor["last_name"]}')
               .toList();
         });
       } else {
@@ -74,8 +73,7 @@ class _CreateExpedientes extends State<CreateExpedientes> {
         setState(() {
           _patients = data.map((item) => item as Map<String, dynamic>).toList();
           _patientNames = _patients
-              .map((patient) =>
-                  '${patient["first_name"]} ${patient["last_name"]}')
+              .map((patient) => '${patient["first_name"]} ${patient["last_name"]}')
               .toList();
         });
       } else {
@@ -89,7 +87,6 @@ class _CreateExpedientes extends State<CreateExpedientes> {
       );
     }
   }
-
 
   Future<void> _fetchInsuranceCompanies() async {
     final url = Uri.parse('https://health-back-lingering-wave-8458.fly.dev/api/companies/');
@@ -113,45 +110,61 @@ class _CreateExpedientes extends State<CreateExpedientes> {
     }
   }
 
-  Future<void> createExpediente() async {
-    if (_formKey.currentState!.validate()) {
-      final url = Uri.parse('https://health-back-lingering-wave-8458.fly.dev/api/paymentLetters/invoice');
-      var request = http.MultipartRequest('POST', url);
+ Future<void> createExpediente() async { 
+  if (_formKey.currentState!.validate()) {
+    final url = Uri.parse('https://health-back-lingering-wave-8458.fly.dev/api/paymentLetters/invoice');
+    var request = http.MultipartRequest('POST', url);
 
-      request.fields['letter_number'] = _letterNumberController.text;
-      request.fields['doctor_id'] = _doctorIdController.text;
-      request.fields['insurance_id'] = _insuranceIdController.text;
-      request.fields['patient_id'] = _patientIdController.text;
-      request.fields['service_date'] = _serviceDateController.text;
-      request.fields['status'] = _statusController.text;
+    request.fields['letter_number'] = _letterNumberController.text;
+    request.fields['doctor_id'] = _doctorIdController.text;
+    request.fields['insurance_id'] = '1';
+    request.fields['patient_id'] = _patientIdController.text;
+    request.fields['service_date'] = _serviceDateController.text;
+    request.fields['status'] = 'Pending';
 
-      if (_file != null) {
-        request.files.add(await http.MultipartFile.fromPath('urlFile', _file!.path));
-      }
+    if (_file != null) {
+      request.files.add(await http.MultipartFile.fromPath('urlFile', _file!.path));
+    }
 
-      try {
-        var response = await request.send();
-        if (response.statusCode == 200) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Expediente creado exitosamente')),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error al crear expediente')),
-          );
-        }
-      } catch (e) {
+    // Log del payload que estás enviando
+    print('Fields: ${request.fields}');
+    if (_file != null) {
+      print('File path: ${_file!.path}');
+    }
+
+    try {
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        Navigator.pushNamed(context, '/home_screen_doctor');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error en la conexión')),
+          SnackBar(content: Text('Expediente creado exitosamente')),
+        );
+      } else {
+        Navigator.pushNamed(context, '/home_screen_doctor');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error al crear expediente')),
         );
       }
+              
+
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('.')),
+      );
+      Navigator.pushNamed(context, '/home_screen_doctor');
     }
   }
+}
+
 
   Future<void> pickFile() async {
-    // Aquí puedes implementar la lógica para seleccionar un archivo
-    // Por ejemplo, usando el paquete 'file_picker'
-    // _file = await FilePicker.getFile();
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      setState(() {
+        _file = File(result.files.single.path!);
+        _fileNameController.text = result.files.single.name; // Mostrar nombre del archivo
+      });
+    }
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -182,101 +195,128 @@ class _CreateExpedientes extends State<CreateExpedientes> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 11, 103, 116),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Regresar a la pantalla anterior
-          },
-        ),
-        title: const Text('Expediente'),
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      backgroundColor: const Color.fromARGB(255, 11, 103, 116),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.pop(context); // Regresar a la pantalla anterior
+        },
       ),
-      resizeToAvoidBottomInset: false, // No mover el contenido al abrir el teclado
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/background.jpg'),
-            fit: BoxFit.cover,
-          ),
+      title: const Text('Expediente'),
+    ),
+    resizeToAvoidBottomInset: false, // No mover el contenido al abrir el teclado
+    body: Container(
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/background.jpg'),
+          fit: BoxFit.cover,
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Subtítulo
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 11, 103, 116),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 5,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'Crear Expediente',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Subtítulo
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 11, 103, 116),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
                     ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(10),
+                alignment: Alignment.center,
+                child: const Text(
+                  'Crear Expediente',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),
+            ),
 
-              // Formulario
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      // Número de carta
-                      _buildTextFormField(_letterNumberController, 'Número de carta'),
-                      // ID del doctor
-                      _buildDoctorAutocomplete(),                      // Compañía de seguros con Autocomplete
-                      _buildInsuranceAutocomplete(),
-                      // ID del paciente
-                      _buildPatientAutocomplete(),
-                      // Fecha del servicio
-                      GestureDetector(
-                        onTap: () => _selectDate(context),
-                        child: AbsorbPointer(
-                          child: _buildDateField(),
+            // Formulario
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    // Número de carta
+                    _buildTextFormField(_letterNumberController, 'Número de carta'),
+                    // ID del doctor
+                    _buildDoctorAutocomplete(),
+                    // Compañía de seguros con Autocomplete
+                    _buildInsuranceAutocomplete(),
+                    // ID del paciente
+                    _buildPatientAutocomplete(),
+                    // Fecha del servicio
+                    GestureDetector(
+                      onTap: () => _selectDate(context),
+                      child: AbsorbPointer(
+                        child: _buildDateField(),
+                      ),
+                    ),
+                    // Selección de expediente médico
+                    GestureDetector(
+                      onTap: pickFile,
+                      child: AbsorbPointer(
+                        child: TextFormField(
+                          controller: _fileNameController,
+                          decoration: InputDecoration(
+                            labelText: 'Seleccionar expediente médico',
+                            hintText: 'Seleccione un archivo',
+                            suffixIcon: Icon(Icons.attach_file),
+                          ),
+                          readOnly: true,
                         ),
                       ),
-                      // Estado
-                      // Selección de archivo
-                      ElevatedButton(
-                        onPressed: pickFile,
-                        child: Text('Seleccionar archivo'),
-                      ),
-                      const SizedBox(height: 20),
-                      // Botón de crear expediente
-                      ElevatedButton(
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
                         onPressed: createExpediente,
-                        child: const Text('Crear Expediente'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 6, 122, 55),
+                          minimumSize: const Size(double.infinity, 60), // Altura fija de 60 px
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Text(
+                          'Crear expediente',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    // Botón de crear expediente
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildDoctorAutocomplete() {
     return Padding(
@@ -332,59 +372,59 @@ class _CreateExpedientes extends State<CreateExpedientes> {
     );
   }
 
- Widget _buildPatientAutocomplete() {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Container(
-      width: MediaQuery.of(context).size.width * 0.8, // Consistencia con otros inputs
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Autocomplete<String>(
-        optionsBuilder: (TextEditingValue textEditingValue) {
-          return _patientNames.where((name) =>
-              name.toLowerCase().contains(textEditingValue.text.toLowerCase()));
-        },
-        onSelected: (String selection) {
-          setState(() {
-            _patientNameController.text = selection;
-            final selectedPatient = _patients.firstWhere(
-                (patient) =>
-                    '${patient["first_name"]} ${patient["last_name"]}' ==
-                    selection);
-            _patientIdController.text = selectedPatient["patient_id"].toString();
-          });
-        },
-        fieldViewBuilder: (BuildContext context,
-            TextEditingController fieldTextController,
-            FocusNode fieldFocusNode,
-            VoidCallback onFieldSubmitted) {
-          return TextFormField(
-            controller: fieldTextController,
-            focusNode: fieldFocusNode,
-            decoration: InputDecoration(
-              labelText: 'Paciente',
-              labelStyle: TextStyle(color: Colors.grey),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide.none,
-              ),
-              contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+  Widget _buildPatientAutocomplete() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.8, // Consistencia con otros inputs
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 5,
+              offset: Offset(0, 3),
             ),
-          );
-        },
+          ],
+        ),
+        child: Autocomplete<String>(
+          optionsBuilder: (TextEditingValue textEditingValue) {
+            return _patientNames.where((name) =>
+                name.toLowerCase().contains(textEditingValue.text.toLowerCase()));
+          },
+          onSelected: (String selection) {
+            setState(() {
+              _patientNameController.text = selection;
+              final selectedPatient = _patients.firstWhere(
+                  (patient) =>
+                      '${patient["first_name"]} ${patient["last_name"]}' ==
+                      selection);
+              _patientIdController.text = selectedPatient["patient_id"].toString();
+            });
+          },
+          fieldViewBuilder: (BuildContext context,
+              TextEditingController fieldTextController,
+              FocusNode fieldFocusNode,
+              VoidCallback onFieldSubmitted) {
+            return TextFormField(
+              controller: fieldTextController,
+              focusNode: fieldFocusNode,
+              decoration: InputDecoration(
+                labelText: 'Paciente',
+                labelStyle: TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              ),
+            );
+          },
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildInsuranceAutocomplete() {
     return Padding(

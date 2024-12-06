@@ -124,6 +124,37 @@ class _CreateRegistroState extends State<CreateRegistro> {
                       const Color.fromARGB(255, 6, 90, 116),
                       CreateCompania(),
                     ),
+                    const SizedBox(height: 15),
+                    // Botón Planes de Alimentación
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Navegar a la pantalla de Planes de Alimentación
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateMealPlan(), // Navegar a la vista
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 6, 122, 55),
+                          minimumSize: const Size(double.infinity, 60), // Altura fija de 60 px
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Text(
+                          'Planes de Alimentación',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
