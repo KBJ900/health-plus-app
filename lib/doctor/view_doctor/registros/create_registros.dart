@@ -2,7 +2,6 @@ import 'package:diet_recipe_app/doctor/view_doctor/registros/view/compa%C3%B1ia_
 import 'package:flutter/material.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/expedientes_screen.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/pacientes_screen.dart';
-import 'create_meal_plan.dart'; // Importa la vista create_meal_plan
 
 class CreateRegistro extends StatefulWidget {
   const CreateRegistro({Key? key}) : super(key: key);
@@ -109,7 +108,7 @@ class _CreateRegistroState extends State<CreateRegistro> {
                       'Crear Plan',
                       Icons.add_chart,
                       const Color.fromARGB(255, 6, 122, 55),
-                      CreateMealPlan(), // Redirige a la vista create_meal_plan
+                      null, // Reemplaza con tu vista para "Crear Plan"
                     ),
                     _buildCard(
                       context,
