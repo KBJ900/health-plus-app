@@ -2,6 +2,7 @@ import 'package:diet_recipe_app/doctor/view_doctor/registros/view/compa%C3%B1ia_
 import 'package:flutter/material.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/expedientes_screen.dart';
 import 'package:diet_recipe_app/doctor/view_doctor/registros/view/pacientes_screen.dart';
+import 'create_meal_plan.dart'; // Importa la vista create_meal_plan
 
 class CreateRegistro extends StatefulWidget {
   const CreateRegistro({Key? key}) : super(key: key);
@@ -108,7 +109,7 @@ class _CreateRegistroState extends State<CreateRegistro> {
                       'Crear Plan',
                       Icons.add_chart,
                       const Color.fromARGB(255, 6, 122, 55),
-                      null, // Reemplaza con tu vista para "Crear Plan"
+                      CreateMealPlan(), // Redirige a la vista create_meal_plan
                     ),
                     _buildCard(
                       context,
@@ -123,37 +124,6 @@ class _CreateRegistroState extends State<CreateRegistro> {
                       Icons.business,
                       const Color.fromARGB(255, 6, 90, 116),
                       CreateCompania(),
-                    ),
-                    const SizedBox(height: 15),
-                    // Botón Planes de Alimentación
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Navegar a la pantalla de Planes de Alimentación
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CreateMealPlan(), // Navegar a la vista
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 6, 122, 55),
-                          minimumSize: const Size(double.infinity, 60), // Altura fija de 60 px
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text(
-                          'Planes de Alimentación',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),
