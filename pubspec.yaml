@@ -7,6 +7,9 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
+  url_launcher: ^6.3.1
+  dio: ^4.0.0
+  path_provider: ^2.0.0
   connectivity_plus: ^6.1.0
   dots_indicator: ^3.0.0
   shared_preferences: ^2.3.2
