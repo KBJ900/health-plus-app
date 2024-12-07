@@ -1,12 +1,7 @@
-// =============================
-// 🟩 SECCIÓN: Importación de paquetes
-// =============================
-
 import 'package:flutter/material.dart';
-
-// =============================
-// 🟩 SECCIÓN: HomeDoctorPage
-// =============================
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeDoctorPage extends StatefulWidget {
   HomeDoctorPage({Key? key}) : super(key: key);
@@ -15,24 +10,15 @@ class HomeDoctorPage extends StatefulWidget {
   _HomeDoctorPageState createState() => _HomeDoctorPageState();
 }
 
-// =============================
-// 🟩 SECCIÓN: Estado de HomeDoctorPage
-// =============================
-
 class _HomeDoctorPageState extends State<HomeDoctorPage> {
   final TextEditingController _searchController = TextEditingController();
-  final List<Map<String, String>> _users = List.generate(20, (index) {
-    return {
-      'name': 'Expediente $index',
-      'email': 'Expedient$index@example.com',
-    };
-  });
-  List<Map<String, String>> _filteredUsers = [];
+  List<Map<String, dynamic>> _users = [];
+  List<Map<String, dynamic>> _filteredUsers = [];
 
   @override
   void initState() {
     super.initState();
-    _filteredUsers = _users;
+    _fetchUsers();
     _searchController.addListener(_filterUsers);
   }
 
@@ -43,16 +29,58 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
     super.dispose();
   }
 
+  Future<void> _fetchUsers() async {
+    final url = Uri.parse('https://health-back-lingering-wave-8458.fly.dev/api/paymentLetters/');
+    try {
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        setState(() {
+          _users = data.map((item) => item as Map<String, dynamic>).toList();
+          _filteredUsers = _users;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error al cargar los expedientes')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error en la conexión')),
+      );
+    }
+  }
+
   void _filterUsers() {
     final query = _searchController.text.toLowerCase();
     setState(() {
       _filteredUsers = _users.where((user) {
-        final name = user['name']!.toLowerCase();
-        final email = user['email']!.toLowerCase();
-        return name.contains(query) || email.contains(query);
+        final doctorName = '${user['doctor']['first_name']} ${user['doctor']['last_name']}'.toLowerCase();
+        final patientName = '${user['patient']['first_name']} ${user['patient']['last_name']}'.toLowerCase();
+        return doctorName.contains(query) || patientName.contains(query);
       }).toList();
     });
   }
+
+ Future<void> _openFile(String url) async {
+  final fullUrl = Uri.parse('https://health-back-lingering-wave-8458.fly.dev$url');
+  try {
+    if (await canLaunchUrl(fullUrl)) {
+      await launchUrl(
+        fullUrl,
+        mode: LaunchMode.externalApplication,
+      );
+    } else {
+      throw 'No se puede abrir la URL: $fullUrl';
+    }
+  } catch (e) {
+    print('Error al abrir el archivo: $e');
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('No se pudo abrir el archivo')),
+    );
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -62,19 +90,12 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
         color: Colors.white,
         child: Stack(
           children: [
-            // =============================
-            // 🟩 SECCIÓN: Fondo de imagen
-            // =============================
             Positioned.fill(
               child: Image.asset(
                 'assets/images/background.jpg',
                 fit: BoxFit.cover,
               ),
             ),
-
-            // =============================
-            // 🟩 SECCIÓN: Cabecera
-            // =============================
             Column(
               children: [
                 Padding(
@@ -118,10 +139,6 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
                     ),
                   ),
                 ),
-
-                // =============================
-                // 🟩 SECCIÓN: Subtítulo "Lista de Expedientes"
-                // =============================
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Container(
@@ -148,10 +165,6 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
                     ),
                   ),
                 ),
-
-                // =============================
-                // 🟩 SECCIÓN: Barra de búsqueda
-                // =============================
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Material(
@@ -176,10 +189,6 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
                     ),
                   ),
                 ),
-
-                // =============================
-                // 🟩 SECCIÓN: Lista de usuarios filtrados
-                // =============================
                 Expanded(
                   child: GridView.builder(
                     padding: const EdgeInsets.all(20),
@@ -192,7 +201,7 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
                     itemCount: _filteredUsers.length,
                     itemBuilder: (context, index) {
                       final user = _filteredUsers[index];
-                      return _AnimatedCard(user: user);
+                      return _AnimatedCard(user: user, onTap: () => _openFile(user['urlFile']));
                     },
                   ),
                 ),
@@ -205,25 +214,17 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
   }
 }
 
-// =============================
-// 🟩 SECCIÓN: _AnimatedCard
-// =============================
-
 class _AnimatedCard extends StatefulWidget {
-  final Map<String, String> user;
+  final Map<String, dynamic> user;
+  final VoidCallback onTap;
 
-  const _AnimatedCard({Key? key, required this.user}) : super(key: key);
+  const _AnimatedCard({Key? key, required this.user, required this.onTap}) : super(key: key);
 
   @override
   State<_AnimatedCard> createState() => _AnimatedCardState();
 }
 
-// =============================
-// 🟩 SECCIÓN: Estado de _AnimatedCard
-// =============================
-
-class _AnimatedCardState extends State<_AnimatedCard>
-    with SingleTickerProviderStateMixin {
+class _AnimatedCardState extends State<_AnimatedCard> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -244,11 +245,7 @@ class _AnimatedCardState extends State<_AnimatedCard>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        if (_controller.isAnimating) return;
-        _controller.reset();
-        _controller.forward();
-      },
+      onTap: widget.onTap,
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
@@ -273,9 +270,6 @@ class _AnimatedCardState extends State<_AnimatedCard>
           ),
           child: Stack(
             children: [
-              // =============================
-              // 🟩 SECCIÓN: Contenido de la tarjeta
-              // =============================
               Column(
                 children: [
                   const Spacer(),
@@ -303,7 +297,7 @@ class _AnimatedCardState extends State<_AnimatedCard>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          widget.user['name']!,
+                          '${widget.user['doctor']['first_name']} ${widget.user['doctor']['last_name']}',
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -312,7 +306,7 @@ class _AnimatedCardState extends State<_AnimatedCard>
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          widget.user['email']!,
+                          '${widget.user['patient']['first_name']} ${widget.user['patient']['last_name']}',
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.white70,
