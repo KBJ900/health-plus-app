@@ -56,11 +56,9 @@ class MyPlanItemWidget extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(getHorizontalSize(16)),
-                border: Border.all(
-                    color:isPending? Color(0x80C98400):Color(0x8004B155)
-                ),
+                
               ),
-              child: Text(isPending?'Pending':'Complete',style: TextStyle(
+              child: Text('Ver Plan',style: TextStyle(
                   fontSize: getFontSize(14),
                   fontWeight: FontWeight.w500,
                   color:isPending?Color(0xFFC98400):AppColor.success,
