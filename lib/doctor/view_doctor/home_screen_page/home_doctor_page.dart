@@ -76,7 +76,7 @@ class _HomeDoctorPageState extends State<HomeDoctorPage> {
   } catch (e) {
     print('Error al abrir el archivo: $e');
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('No se pudo abrir el archivo')),
+      SnackBar(content: Text('No se pudo abrir el archivo: $e')),
     );
   }
 }
