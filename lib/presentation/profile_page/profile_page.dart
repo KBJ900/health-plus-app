@@ -44,38 +44,9 @@ class ProfilePage extends StatelessWidget {
                 top: 40, right: 20, left: 20, bottom: 32), // Relleno alrededor de la foto.
               child: Row( // Organiza los widgets de la foto y la información personal en una fila.
                 children: [
-                  CustomImageView(
-                    svgPath: ImageConstant.imgAvtar1, // Ruta de la imagen del avatar.
-                    height: getSize(100), // Establece la altura de la imagen.
-                    width: getSize(100), // Establece el ancho de la imagen.
-                  ),
-                  Padding(
-                    padding: getPadding(
-                      left: 15,
-                      top: 23,
-                      bottom: 23, // Relleno para los datos personales.
-                    ),
-                    child: Column( // Organiza el nombre y correo en una columna.
-                      crossAxisAlignment: CrossAxisAlignment.start, // Alinea el texto a la izquierda.
-                      mainAxisAlignment: MainAxisAlignment.start, // Alinea desde la parte superior.
-                      children: [
-                        Text(
-                          "lbl_john_abram2".tr, // Nombre traducido.
-                          style: theme.textTheme.titleMedium, // Estilo del nombre.
-                        ),
-                        Padding(
-                          padding: getPadding(
-                            top: 11, // Relleno para el correo electrónico.
-                          ),
-                          child: Text(
-                            "msg_johnabram_gmail_com".tr, // Correo traducido.
-                            style: theme.textTheme.bodyLarge, // Estilo para el correo.
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  Text('Bienvenido', // Texto de bienvenida.
+                      style: theme.textTheme.titleMedium), // Estilo del texto de bienvenida.
+                                  ],
               ),
             ),
             
@@ -87,13 +58,7 @@ class ProfilePage extends StatelessWidget {
                 Get.toNamed(AppRoutes.myProfileScreen); // Navega a la pantalla de perfil.
               },
             ),
-            ProfileOpe(
-              onTapOption: () {
-                Get.toNamed(AppRoutes.settingsScreen); // Navega a la pantalla de configuraciones.
-              },
-              optionName: 'Configuración', // Nombre de la opción traducido.
-              optionImg: ImageConstant.imgSettings, // Imagen para la opción de configuración.
-            ),
+
             ProfileOpe(
               onTapOption: () {
                 Get.toNamed(AppRoutes.privacyPolicyScreen); // Navega a la pantalla de la política de privacidad.
